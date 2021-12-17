@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node.js Application</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+  </head>
+  <body>
+    <div class="container py-4">
+      <form class="alert alert-secondary" action="/" method="post">
+        <div>
+          <label for="firstname-field">First name:</label>
+
+          <input
+            type="text"
+            class="form-control mt-1"
+            placeholder="please set first name"
+            id="firstname-field"
+            autofocus
+            name="firstName" />
+        </div>
+
+        <div class="mt-4">
+          <label for="lastname-field">Last name:</label>
+
+          <input
+            type="text"
+            class="form-control mt-1"
+            placeholder="please set last name"
+            id="lastname-field"
+            name="lastName" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      </form>
+
+      <br /><br />
+
+      <ul class="list-group">
+        <% users.forEach(function(user){ %>
+        <li class="list-group-item text-center py-3">
+          <%= user.firstName %> <%= user.lastName %>
+        </li>
+        <% }) %>
+      </ul>
+  </body>
+</html>

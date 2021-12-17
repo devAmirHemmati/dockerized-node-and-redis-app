@@ -1,0 +1,23 @@
+services:
+  redis:
+    container_name: redis_db
+    image: redis:latest
+    networks:
+      - main
+    volumes:
+      - redis_data:/data
+  app:
+    container_name: node_app
+    build: .
+    depends_on:
+      - redis
+    ports:
+      - '3500:3500'
+    networks:
+      - main
+
+networks:
+  main:
+
+volumes:
+  redis_data:
