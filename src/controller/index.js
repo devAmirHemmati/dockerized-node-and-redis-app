@@ -31,7 +31,32 @@ const PostHomeController = async (req, res) => {
   return;
 };
 
+const DeleteHomeController = async (req, res) => {
+  const userDb = await new UserDB();
+
+  const data = req.body;
+
+  if (
+    typeof data.firstName === 'undefined' ||
+    typeof data.lastName === 'undefined'
+  ) {
+    res.redirect('/');
+    return;
+  }
+
+  const payload = {
+    firstName: data.firstName.trim(),
+    lastName: data.lastName.trim(),
+  };
+
+  await userDb.deleteUser(payload);
+
+  res.redirect('/');
+  return;
+};
+
 module.exports = {
   GetHomeController,
   PostHomeController,
+  DeleteHomeController,
 };
